@@ -14,4 +14,8 @@ public class Employee : Entity
     public Location Location { get; set; }
 
 
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName} ({JobTitle}), Salary: {Salary}, Date of Birth: {DateOfBirth}";
+    }
 }

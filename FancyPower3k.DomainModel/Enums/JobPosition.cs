@@ -2,12 +2,12 @@
 
 public enum JobPosition
 {
-    Electrician,
-    Developer,
     CEO,
     CFO,
     ProjectManager,
-    HRManager,
     MarketingManager,
-    Accountant
+    HRManager,
+    Accountant,
+    Electrician,
+    Developer,
 }
