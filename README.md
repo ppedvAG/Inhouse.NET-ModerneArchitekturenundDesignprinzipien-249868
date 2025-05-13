@@ -3,16 +3,16 @@ Kurs Repository zu Kurs .NET - Moderne Architekturen und Designprinzipien der pp
 
 ## M001 | Was Architektur ist
 
-- [ ] Ebenenmodell
-- [ ] Aspekte, Richtlinien, Analyse
-- [ ] 3P-Regel: Product, Process, People
-- [ ] Funktional vs. Nicht-Funktional
-- [ ] Kosten und Technische Schulden
+- [x] Ebenenmodell & Struktur
+- [x] Aspekte, Richtlinien, Analyse
+- [x] 3P-Regel: Product, Process, People
+- [x] Funktional vs. Nicht-Funktional
+- [x] Kosten und Technische Schulden
 
 ## M002 | Architekturüberblick
 
-- [ ] Cargo Cult Programming
-- [ ] Überblick verschiedener Architekturen
+- [x] Cargo Cult Programming
+- [x] Überblick verschiedener Architekturen
 - [ ] Beispiel Clean-Architecture "Todo List"
 
 ```bash
@@ -21,24 +21,24 @@ dotnet new install Clean.Architecture.Solution.Template
 
 ## M003 | Design Patterns
 
-- [ ] Relevanz und Entwicklung der Muster
-- [ ] Creational Patterns: Wie werden Objekte erzeugt?
+- [x] Relevanz und Entwicklung der Muster
+- [x] Creational Patterns: Wie werden Objekte erzeugt?
   *  FactoryMethod als PizzaShop
   *  BuilderPattern als PizzaConfigurator
-- [ ] Structural Patterns: Wie werden Objekte verbunden und integriert?
+- [x] Structural Patterns: Wie werden Objekte verbunden und integriert?
   *  Decorator: Pizza schneiden und verpacken
   *  Adapter: Pfannen-Pizza als "normale" Pizza bestellen
-- [ ] Behavioral Patterns: Wie verhalten sich Objekte und Objektstrukturen?
+- [x] Behavioral Patterns: Wie verhalten sich Objekte und Objektstrukturen?
   *  Strategy: Pizza mit einem Fahrzeug ausliefern
-- [ ] Lab Payment-Service
+- [x] Lab Payment-Service
 
 ## M004 | Design Principles
 
-- [ ] Prinzipien und Code-Smells
-- [ ] SOLID Bewertung
-- [ ] Säulen der OOP, Kohäsion und Kopplung
-- [ ] Beispiele zu ISP und DIP
-- [ ] Lab Artikel: Ist Architektur überbewertet?
+- [x] Prinzipien und Code-Smells
+- [x] SOLID Bewertung
+- [x] Säulen der OOP, Kohäsion und Kopplung
+- [x] Beispiele zu ISP und DIP
+- [x] Lab Artikel: Ist Architektur überbewertet?
 
 ## M005 | Event Sourcing
 
