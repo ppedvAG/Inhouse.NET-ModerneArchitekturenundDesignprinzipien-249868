@@ -9,7 +9,7 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        var cart = new ShoppingCartBuilder()
+        ShoppingCart cart = new ShoppingCartBuilder()
             .AddProduct("Laptop", 1000.0m)
             .AddProduct("Mouse", 50.0m)
             .SetPaymentMethod(PaymentMethod.CreditCard)

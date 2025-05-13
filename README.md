@@ -57,10 +57,11 @@ dotnet new install Clean.Architecture.Solution.Template
 
 ## M007 | Business Anwendung
 
-- [ ] Eigene Geschäftsanwendung entwerfen
-- [ ] Klassendiagramm erstellen mit draw.io
-- [ ] Domänen-modell generieren lassen
+- [x] Eigene Geschäftsanwendung entwerfen
+- [x] Klassendiagramm erstellen mit draw.io
+- [x] Domänen-modell generieren lassen
 - [ ] Testdatenbank mit Entity Framework
+- [ ] [Überblick Strategien](https://learn.microsoft.com/de-de/ef/core/testing/)
 - [ ] Testdaten generieren lassen
 - [ ] WebAPI erstellen
 - [ ] Weitere Front-Ends erstellen
