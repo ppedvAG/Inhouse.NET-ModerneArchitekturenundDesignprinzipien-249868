@@ -20,8 +20,6 @@ public class FancyPowerDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        Seed.SeedData(modelBuilder);
-
         // Configure the relationships
 
         // Location to DistributionPanel: One-to-Many
@@ -41,5 +39,8 @@ public class FancyPowerDbContext : DbContext
             .HasMany(l => l.Employees)
             .WithOne(e => e.Location)
             .HasForeignKey(e => e.LocationId);
+
+
+        Seed.SeedData(modelBuilder);
     }
 }

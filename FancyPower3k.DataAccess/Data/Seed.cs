@@ -1,31 +1,40 @@
 ﻿using FancyPower3k.DomainModel.Entities;
+using FancyPower3k.DomainModel.Enums;
 using Microsoft.EntityFrameworkCore;
-
-namespace FancyPower3k.DataAccess.Data;
 
 public static class Seed
 {
+    // Predefined GUIDs
+    private const string Location1Id = "123e4567-e89b-12d3-a456-426614174000";
+    private const string Location2Id = "123e4567-e89b-12d3-a456-426614174001";
+    private const string DistributionPanel1Id = "123e4567-e89b-12d3-a456-426614174002";
+    private const string DistributionPanel2Id = "123e4567-e89b-12d3-a456-426614174003";
+    private const string Consumer1Id = "123e4567-e89b-12d3-a456-426614174004";
+    private const string Consumer2Id = "123e4567-e89b-12d3-a456-426614174005";
+    private const string Consumer3Id = "123e4567-e89b-12d3-a456-426614174006";
+    private const string BaseEmployeeId = "123e4567-e89b-12d3-a456-426614174";
+
+    private static readonly Random random = new(42);
+    private static readonly string[] _firstNames = { "John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Jennifer", "William", "Lisa" };
+    private static readonly string[] LastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson" };
+
     internal static void SeedData(ModelBuilder modelBuilder)
     {
         var locations = new List<Location>
         {
             new Location
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Location1Id,
                 Name = "Acme Corporation HQ",
                 Address = "123 Toon Town Lane",
-                Size = 5000,
-                DistributionPanels = new List<DistributionPanel>(),
-                Employees = new List<Employee>()
+                Size = 5000
             },
             new Location
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Location2Id,
                 Name = "Wayne Enterprises",
                 Address = "456 Gotham Ave",
-                Size = 10000,
-                DistributionPanels = new List<DistributionPanel>(),
-                Employees = new List<Employee>()
+                Size = 10000
             }
         };
 
@@ -33,105 +42,69 @@ public static class Seed
         {
             new DistributionPanel
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = DistributionPanel1Id,
                 Name = "Main Panel Gotham",
                 Description = "Primary distribution panel for Gotham",
                 MaxPowerDelivery = 10000,
-                LocationId = locations[1].Id,
-                Location = locations[1],
-                Consumers = new List<Consumer>()
+                LocationId = locations[1].Id
             },
             new DistributionPanel
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = DistributionPanel2Id,
                 Name = "Backup Panel Toon",
                 Description = "Backup distribution panel for Toon Town",
                 MaxPowerDelivery = 5000,
-                LocationId = locations[0].Id,
-                Location = locations[0],
-                Consumers = new List<Consumer>()
+                LocationId = locations[0].Id
             }
         };
-
-        locations[0].DistributionPanels.Add(distributionPanels[1]);
-        locations[1].DistributionPanels.Add(distributionPanels[0]);
 
         var consumers = new List<Consumer>
         {
             new Consumer
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Consumer1Id,
                 Name = "Bugs Bunny Office",
                 Description = "Office of Bugs Bunny",
                 PowerConsumption = 1500,
                 MaxConsumption = 2000,
-                DistributionPanelId = distributionPanels[1].Id,
-                DistributionPanel = distributionPanels[1]
+                DistributionPanelId = distributionPanels[1].Id
             },
             new Consumer
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Consumer2Id,
                 Name = "Daffy Duck Lab",
                 Description = "Lab of Daffy Duck",
                 PowerConsumption = 2000,
                 MaxConsumption = 2500,
-                DistributionPanelId = distributionPanels[1].Id,
-                DistributionPanel = distributionPanels[1]
+                DistributionPanelId = distributionPanels[1].Id
             },
             new Consumer
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Consumer3Id,
                 Name = "Batman Cave",
                 Description = "Secret cave of Batman",
                 PowerConsumption = 5000,
                 MaxConsumption = 7000,
-                DistributionPanelId = distributionPanels[0].Id,
-                DistributionPanel = distributionPanels[0]
+                DistributionPanelId = distributionPanels[0].Id
             }
         };
 
-        distributionPanels[0].Consumers.Add(consumers[2]);
-        distributionPanels[1].Consumers.ToList().AddRange(consumers.Take(2));
-
-        var employees = new List<Employee>
+        var employees = new List<Employee>();
+        for (int i = 0; i < 50; i++)
         {
-            new Employee
+            string employeeId = $"{BaseEmployeeId}{i:D3}"; // Increment the last 3 digits
+            employees.Add(new Employee
             {
-                Id = Guid.NewGuid().ToString(),
-                FirstName = "Bugs",
-                LastName = "Bunny",
-                DateOfBirth = new DateTime(1940, 7, 27),
-                JobTitle = "Chief Carrot Officer",
-                Salary = 100000,
-                LocationId = locations[0].Id,
-                Location = locations[0]
-            },
-            new Employee
-            {
-                Id = Guid.NewGuid().ToString(),
-                FirstName = "Daffy",
-                LastName = "Duck",
-                DateOfBirth = new DateTime(1937, 4, 17),
-                JobTitle = "Head of Chaos",
-                Salary = 90000,
-                LocationId = locations[0].Id,
-                Location = locations[0]
-            },
-            new Employee
-            {
-                Id = Guid.NewGuid().ToString(),
-                FirstName = "Bruce",
-                LastName = "Wayne",
-                DateOfBirth = new DateTime(1939, 5, 1),
-                JobTitle = "CEO",
-                Salary = 200000,
-                LocationId = locations[1].Id,
-                Location = locations[1]
-            }
-        };
-
-        locations[0].Employees.ToList().AddRange(employees.Take(2));
-        locations[1].Employees.Add(employees[2]);
+                Id = employeeId,
+                FirstName = _firstNames[random.Next(_firstNames.Length)],
+                LastName = LastNames[random.Next(LastNames.Length)],
+                DateOfBirth = new DateTime(random.Next(1960, 2000), random.Next(1, 13), random.Next(1, 29)),
+                JobTitle = ((JobPosition)random.Next(Enum.GetNames(typeof(JobPosition)).Length)).ToString(),
+                Position = (JobPosition)random.Next(Enum.GetNames(typeof(JobPosition)).Length),
+                Salary = random.Next(50, 150) * 1000,
+                LocationId = locations[random.Next(locations.Count)].Id
+            });
+        }
 
         modelBuilder.Entity<Location>().HasData(locations);
         modelBuilder.Entity<DistributionPanel>().HasData(distributionPanels);
