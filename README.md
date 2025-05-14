@@ -42,10 +42,10 @@ dotnet new install Clean.Architecture.Solution.Template
 
 ## M005 | Event Sourcing
 
-- [ ] Domain Driven Design
-- [ ] Datenpersistenz
-- [ ] Beispiel Student Course
-- [ ] Lab Bankkonto
+- [x] Domain Driven Design
+- [x] Datenpersistenz
+- [x] Beispiel Student Course
+- [x] Lab Bankkonto
 
 ## M006 | WebAPI mit CQRS
 
