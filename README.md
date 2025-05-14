@@ -64,5 +64,5 @@ dotnet new install Clean.Architecture.Solution.Template
 - [x] [Überblick Strategien](https://learn.microsoft.com/de-de/ef/core/testing/)
 - [x] Testdaten generieren lassen
 - [x] Geschäftslogik implementieren
-- [ ] WebAPI erstellen
+- [x] WebAPI erstellen
 - [ ] Weitere Front-Ends erstellen

@@ -97,8 +97,7 @@ public static class Seed
             }
         };
 
-        var employees = new List<Employee>();
-        CreateEmployees(locations);
+        var employees = CreateEmployees(locations);
 
         modelBuilder.Entity<Location>().HasData(locations);
         modelBuilder.Entity<DistributionPanel>().HasData(distributionPanels);

@@ -11,7 +11,7 @@ public class Employee : Entity
     public JobPosition Position { get; set; }
     public double Salary { get; set; }
     public string LocationId { get; set; }
-    public Location Location { get; set; }
+    public Location? Location { get; set; }
 
 
     public override string ToString()

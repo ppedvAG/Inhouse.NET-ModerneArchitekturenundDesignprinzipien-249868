@@ -1,0 +1,43 @@
+@WebAPI_HostAddress = http://localhost:5174
+
+### Get all employees
+GET {{WebAPI_HostAddress}}/api/employees
+Accept: application/json
+
+### Get employee by ID
+GET {{WebAPI_HostAddress}}/api/employees/123e4567-e89b-12d3-a456-426614174004
+Accept: application/json
+
+### Create a new employee
+POST {{WebAPI_HostAddress}}/api/employees
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-01-01",
+  "jobTitle": "Developer",
+  "salary": 50000,
+  "locationId": "123e4567-e89b-12d3-a456-426614174001",
+  "position": 4
+}
+
+### Update an existing employee
+PUT {{WebAPI_HostAddress}}/api/employees/{id}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-01-01",
+  "jobTitle": "Senior Developer",
+  "salary": 60000,
+  "locationId": 1
+}
+
+### Delete an employee
+DELETE {{WebAPI_HostAddress}}/api/employees/123e4567-e89b-12d3-a456-426614174004
+Accept: application/json
