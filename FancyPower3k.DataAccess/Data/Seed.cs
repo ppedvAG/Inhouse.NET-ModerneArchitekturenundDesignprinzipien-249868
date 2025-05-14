@@ -4,15 +4,23 @@ using Microsoft.EntityFrameworkCore;
 
 public static class Seed
 {
-    // Predefined GUIDs
-    private const string Location1Id = "123e4567-e89b-12d3-a456-426614174000";
-    private const string Location2Id = "123e4567-e89b-12d3-a456-426614174001";
-    private const string DistributionPanel1Id = "123e4567-e89b-12d3-a456-426614174002";
-    private const string DistributionPanel2Id = "123e4567-e89b-12d3-a456-426614174003";
-    private const string Consumer1Id = "123e4567-e89b-12d3-a456-426614174004";
-    private const string Consumer2Id = "123e4567-e89b-12d3-a456-426614174005";
-    private const string Consumer3Id = "123e4567-e89b-12d3-a456-426614174006";
-    private const string BaseEmployeeId = "123e4567-e89b-12d3-a456-426614174";
+    #region Predefined GUIDs
+    public const string Location1Id = "123e4567-e89b-12d3-a456-426614174000";
+    public const string Location2Id = "123e4567-e89b-12d3-a456-426614174001";
+    public const string DistributionPanel1Id = "123e4567-e89b-12d3-a456-426614174002";
+    public const string DistributionPanel2Id = "123e4567-e89b-12d3-a456-426614174003";
+    public const string Consumer1Id = "123e4567-e89b-12d3-a456-426614174004";
+    public const string Consumer2Id = "123e4567-e89b-12d3-a456-426614174005";
+    public const string Consumer3Id = "123e4567-e89b-12d3-a456-426614174006";
+    public const string BaseEmployeeId = "123e4567-e89b-12d3-a456-426614174"; 
+    #endregion
+
+    public const int Consumer1PowerConsumption = 1500;
+    public const int Consumer2PowerConsumption = 2000;
+    public const int Consumer1MaxConsumption = 2000;
+    public const int Consumer2MaxConsumption = 2500;
+    public const int DistributionPanel2MaxPowerDelivery = 5000;
+
 
     private static readonly Random _random = new(42);
     private static readonly string[] _firstNames = { "John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Jennifer", "William", "Lisa" };
@@ -53,7 +61,7 @@ public static class Seed
                 Id = DistributionPanel2Id,
                 Name = "Backup Panel Toon",
                 Description = "Backup distribution panel for Toon Town",
-                MaxPowerDelivery = 5000,
+                MaxPowerDelivery = DistributionPanel2MaxPowerDelivery,
                 LocationId = locations[0].Id
             }
         };
@@ -65,8 +73,8 @@ public static class Seed
                 Id = Consumer1Id,
                 Name = "Bugs Bunny Office",
                 Description = "Office of Bugs Bunny",
-                PowerConsumption = 1500,
-                MaxConsumption = 2000,
+                PowerConsumption = Consumer1PowerConsumption,
+                MaxConsumption = Consumer1MaxConsumption,
                 DistributionPanelId = distributionPanels[1].Id
             },
             new Consumer
@@ -74,8 +82,8 @@ public static class Seed
                 Id = Consumer2Id,
                 Name = "Daffy Duck Lab",
                 Description = "Lab of Daffy Duck",
-                PowerConsumption = 2000,
-                MaxConsumption = 2500,
+                PowerConsumption = Consumer2PowerConsumption,
+                MaxConsumption = Consumer2MaxConsumption,
                 DistributionPanelId = distributionPanels[1].Id
             },
             new Consumer

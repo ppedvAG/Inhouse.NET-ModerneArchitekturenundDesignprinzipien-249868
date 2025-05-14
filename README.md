@@ -60,8 +60,9 @@ dotnet new install Clean.Architecture.Solution.Template
 - [x] Eigene Geschäftsanwendung entwerfen
 - [x] Klassendiagramm erstellen mit draw.io
 - [x] Domänen-modell generieren lassen
-- [ ] Testdatenbank mit Entity Framework
-- [ ] [Überblick Strategien](https://learn.microsoft.com/de-de/ef/core/testing/)
-- [ ] Testdaten generieren lassen
+- [x] Testdatenbank mit Entity Framework
+- [x] [Überblick Strategien](https://learn.microsoft.com/de-de/ef/core/testing/)
+- [x] Testdaten generieren lassen
+- [x] Geschäftslogik implementieren
 - [ ] WebAPI erstellen
 - [ ] Weitere Front-Ends erstellen

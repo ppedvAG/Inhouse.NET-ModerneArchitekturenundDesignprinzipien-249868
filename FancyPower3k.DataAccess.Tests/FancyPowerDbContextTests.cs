@@ -1,15 +1,19 @@
 ﻿using FancyPower3k.DataAccess.Data;
+using FancyPower3k.DataAccess.Tests.Extensions;
 using FancyPower3k.DomainModel.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace FancyPower3k.DataAccess.Tests;
 
 [TestClass]
 public class FancyPowerDbContextTests
 {
-    private const string ConnectionString = "Data Source=(localdb)\\SWArch250513;Initial Catalog=UnitTests_{0};Trusted_Connection=True;MultipleActiveResultSets=true";
     private FancyPowerDbContext _context;
-    private DbContextOptions<FancyPowerDbContext> _options;
+
+    /// <summary>
+    /// Magic von MSTest welches hier den TestContext hinein injiziert.
+    /// Typ und Name muessen exakt so lauten.
+    /// </summary>
+    public TestContext TestContext { get; set; }
 
     [ClassInitialize]
     public static void ClassInitialize(TestContext testContext)
@@ -26,21 +30,7 @@ public class FancyPowerDbContextTests
     [TestInitialize]
     public void Setup()
     {
-        string last4PositionsOfGuid = Guid.NewGuid().ToString()[^4..];
-
-        // Configure the context to use SQL LocalDB
-        _options = new DbContextOptionsBuilder<FancyPowerDbContext>()
-            .UseSqlServer(string.Format(ConnectionString, last4PositionsOfGuid))
-            .Options;
-
-        // Create the database and apply migrations
-        _context = new FancyPowerDbContext(_options);
-
-        // Migrate fuehrt EnsureCreated und Migrate aus
-        //_context.Database.EnsureCreated();
-
-        _context.Database.Migrate();
-
+        _context = TestContext.CreateDbContext();
     }
 
     [TestCleanup]
